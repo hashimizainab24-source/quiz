@@ -1,0 +1,1038 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LUMÉ Jewelry | Find Your Style</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Georgia", serif;
+        }
+
+        body {
+            background: #faf7f2;
+            color: #2d2926;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 75px;
+            background: #fffdf9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #eee5db;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 27px;
+            letter-spacing: 5px;
+            font-weight: bold;
+            color: #9b7653;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #3d3732;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #b58b62;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 9%;
+            background: linear-gradient(120deg, #f8efe7, #fffdf9);
+        }
+
+        .hero-text {
+            width: 50%;
+        }
+
+        .small-title {
+            letter-spacing: 4px;
+            font-size: 13px;
+            color: #a17b58;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 500px;
+            color: #665e58;
+            margin-bottom: 35px;
+        }
+
+        .main-btn {
+            background: #9b7653;
+            color: white;
+            border: none;
+            padding: 16px 34px;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .main-btn:hover {
+            background: #76583d;
+            transform: translateY(-2px);
+        }
+
+        .hero-jewelry {
+            width: 40%;
+            height: 430px;
+            background:
+                radial-gradient(circle at 30% 35%, #ffffff 0 7%, transparent 8%),
+                radial-gradient(circle at 65% 55%, #e8cfae 0 12%, transparent 13%),
+                radial-gradient(circle at 45% 70%, #d9b98f 0 8%, transparent 9%),
+                linear-gradient(145deg, #e9ddd0, #fdfbf8);
+            border-radius: 50% 50% 10px 10px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(70, 50, 30, 0.12);
+        }
+
+        .hero-jewelry::before {
+            content: "✦";
+            position: absolute;
+            top: 80px;
+            left: 28%;
+            font-size: 80px;
+            color: #c8a36d;
+        }
+
+        .hero-jewelry::after {
+            content: "♡";
+            position: absolute;
+            bottom: 70px;
+            right: 25%;
+            font-size: 130px;
+            color: #b98d62;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 80px 8%;
+            text-align: center;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 38px;
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 50px;
+        }
+
+        .feature-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            width: 250px;
+            padding: 35px 20px;
+            border: 1px solid #eee3d8;
+            background: #fffdfb;
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .feature h3 {
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* QUIZ */
+        #quiz-section {
+            display: none;
+            min-height: 100vh;
+            padding: 60px 20px;
+            background: #f8f2ec;
+        }
+
+        .quiz-box {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 45px;
+            box-shadow: 0 15px 50px rgba(60,40,20,0.1);
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .quiz-header h2 {
+            font-size: 35px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #eee5dd;
+            margin-top: 25px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 20%;
+            background: #a47b56;
+            transition: 0.4s;
+        }
+
+        .question-number {
+            color: #a47b56;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .question {
+            font-size: 29px;
+            text-align: center;
+            font-weight: normal;
+            margin-bottom: 35px;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .answer {
+            padding: 22px;
+            background: #fffdfb;
+            border: 1px solid #e4d9ce;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .answer:hover {
+            border-color: #a47b56;
+            background: #f9f1e9;
+            transform: translateY(-3px);
+        }
+
+        .answer.selected {
+            background: #a47b56;
+            color: white;
+            border-color: #a47b56;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+        }
+
+        .quiz-btn {
+            padding: 13px 25px;
+            border: 1px solid #a47b56;
+            background: transparent;
+            color: #8b6849;
+            cursor: pointer;
+        }
+
+        .quiz-btn:hover {
+            background: #a47b56;
+            color: white;
+        }
+
+        /* RESULTS */
+        #result-section {
+            display: none;
+            min-height: 100vh;
+            padding: 70px 20px;
+            background: #faf6f1;
+            text-align: center;
+        }
+
+        .result-box {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .result-label {
+            color: #a47b56;
+            letter-spacing: 4px;
+            font-size: 13px;
+        }
+
+        .result-title {
+            font-size: 52px;
+            font-weight: normal;
+            margin: 15px 0;
+        }
+
+        .result-description {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .recommendations {
+            margin-top: 55px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product {
+            background: white;
+            padding-bottom: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+        }
+
+        .product-image {
+            height: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            background: #f1e7dd;
+        }
+
+        .product h3 {
+            margin-top: 20px;
+            font-size: 19px;
+        }
+
+        .product p {
+            color: #9b7653;
+            margin-top: 8px;
+        }
+
+        .retake {
+            margin-top: 45px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #292420;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer .footer-logo {
+            font-size: 25px;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #c9c2bc;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 7%;
+            }
+
+            .hero-text {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-jewelry {
+                width: 90%;
+                height: 300px;
+                margin-top: 45px;
+            }
+
+            .answers {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-box {
+                padding: 30px 20px;
+            }
+
+            .question {
+                font-size: 24px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .result-title {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">LUMÉ</div>
+
+    <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#collections">COLLECTIONS</a></li>
+        <li><a href="#quiz-section">STYLE QUIZ</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+    </ul>
+</nav>
+
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="small-title">
+            DISCOVER YOUR STYLE
+        </div>
+
+        <h1>
+            Jewelry that<br>
+            feels like you.
+        </h1>
+
+        <p>
+            Not sure which jewelry style matches your personality?
+            Take our quick style quiz and discover the pieces
+            that were made for you.
+        </p>
+
+        <button class="main-btn" onclick="startQuiz()">
+            TAKE THE QUIZ ✦
+        </button>
+
+    </div>
+
+    <div class="hero-jewelry"></div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="features" id="collections">
+
+    <h2 class="section-title">
+        Find Your Perfect Match
+    </h2>
+
+    <p class="section-subtitle">
+        Discover jewelry based on your personality and style.
+    </p>
+
+    <div class="feature-container">
+
+        <div class="feature">
+            <div class="feature-icon">💎</div>
+            <h3>Personal Style</h3>
+            <p>
+                Discover the jewelry aesthetic that matches your personality.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">✨</div>
+            <h3>Curated Pieces</h3>
+            <p>
+                Get jewelry recommendations selected especially for your style.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💕</div>
+            <h3>Made For You</h3>
+            <p>
+                Find pieces that fit your everyday look and special moments.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz-section">
+
+    <div class="quiz-box">
+
+        <div class="quiz-header">
+
+            <div class="question-number" id="questionNumber">
+                QUESTION 1 OF 5
+            </div>
+
+            <h2>Find Your Jewelry Style</h2>
+
+            <div class="progress-container">
+                <div class="progress" id="progress"></div>
+            </div>
+
+        </div>
+
+        <h3 class="question" id="question">
+            Which jewelry color do you prefer?
+        </h3>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="quiz-buttons">
+
+            <button class="quiz-btn" onclick="previousQuestion()">
+                ← BACK
+            </button>
+
+            <button class="quiz-btn" onclick="nextQuestion()">
+                NEXT →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RESULTS -->
+<section id="result-section">
+
+    <div class="result-box">
+
+        <div class="result-label">
+            YOUR JEWELRY STYLE IS
+        </div>
+
+        <h1 class="result-title" id="resultTitle">
+            Elegant Minimalist
+        </h1>
+
+        <p class="result-description" id="resultDescription">
+            You love simple, timeless pieces that add a subtle touch of elegance to your look.
+        </p>
+
+
+        <div class="recommendations">
+
+            <h2 class="section-title">
+                Recommended For You
+            </h2>
+
+            <div class="products" id="products"></div>
+
+        </div>
+
+        <button class="main-btn retake" onclick="startQuiz()">
+            RETAKE QUIZ
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer id="contact">
+
+    <div class="footer-logo">
+        LUMÉ
+    </div>
+
+    <p>
+        Jewelry made to reflect who you are.
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 LUMÉ Jewelry. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       QUIZ QUESTIONS
+    ========================= */
+
+    const questions = [
+
+        {
+            question: "Which jewelry color do you prefer?",
+            answers: [
+                "🥇 Gold",
+                "🩶 Silver",
+                "🌸 Rose Gold",
+                "💎 I like all of them"
+            ]
+        },
+
+        {
+            question: "What's your personal style?",
+            answers: [
+                "✨ Minimal & Elegant",
+                "👑 Glamorous",
+                "🖤 Bold & Edgy",
+                "🌸 Cute & Feminine"
+            ]
+        },
+
+        {
+            question: "When do you usually wear jewelry?",
+            answers: [
+                "🌷 Every day",
+                "🎉 Special occasions",
+                "💼 Work / School",
+                "💕 Dates & Events"
+            ]
+        },
+
+        {
+            question: "Which jewelry piece do you love most?",
+            answers: [
+                "💍 Rings",
+                "📿 Necklaces",
+                "👂 Earrings",
+                "💫 Bracelets"
+            ]
+        },
+
+        {
+            question: "Pick the vibe that feels most like you.",
+            answers: [
+                "🤍 Simple",
+                "👑 Luxury",
+                "🌸 Romantic",
+                "🖤 Powerful"
+            ]
+        }
+
+    ];
+
+
+    let currentQuestion = 0;
+
+    let userAnswers = [];
+
+
+    /* =========================
+       START QUIZ
+    ========================= */
+
+    function startQuiz() {
+
+        currentQuestion = 0;
+
+        userAnswers = [];
+
+        document.querySelector(".hero").style.display = "none";
+
+        document.querySelector(".features").style.display = "none";
+
+        document.querySelector("#result-section").style.display = "none";
+
+        document.querySelector("#quiz-section").style.display = "block";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        showQuestion();
+
+    }
+
+
+    /* =========================
+       DISPLAY QUESTION
+    ========================= */
+
+    function showQuestion() {
+
+        const q = questions[currentQuestion];
+
+        document.getElementById("question").textContent = q.question;
+
+        document.getElementById("questionNumber").textContent =
+            "QUESTION " + (currentQuestion + 1) + " OF " + questions.length;
+
+        document.getElementById("progress").style.width =
+            ((currentQuestion + 1) / questions.length * 100) + "%";
+
+
+        const answersContainer = document.getElementById("answers");
+
+        answersContainer.innerHTML = "";
+
+
+        q.answers.forEach((answer, index) => {
+
+            const button = document.createElement("div");
+
+            button.classList.add("answer");
+
+            button.textContent = answer;
+
+
+            if (userAnswers[currentQuestion] === index) {
+                button.classList.add("selected");
+            }
+
+
+            button.onclick = function () {
+
+                userAnswers[currentQuestion] = index;
+
+                document.querySelectorAll(".answer").forEach(btn => {
+                    btn.classList.remove("selected");
+                });
+
+                button.classList.add("selected");
+
+            };
+
+
+            answersContainer.appendChild(button);
+
+        });
+
+    }
+
+
+    /* =========================
+       NEXT QUESTION
+    ========================= */
+
+    function nextQuestion() {
+
+        if (userAnswers[currentQuestion] === undefined) {
+
+            alert("Please choose an answer first ✨");
+
+            return;
+
+        }
+
+
+        if (currentQuestion < questions.length - 1) {
+
+            currentQuestion++;
+
+            showQuestion();
+
+        } else {
+
+            showResult();
+
+        }
+
+    }
+
+
+    /* =========================
+       PREVIOUS QUESTION
+    ========================= */
+
+    function previousQuestion() {
+
+        if (currentQuestion > 0) {
+
+            currentQuestion--;
+
+            showQuestion();
+
+        }
+
+    }
+
+
+    /* =========================
+       CALCULATE RESULT
+    ========================= */
+
+    function showResult() {
+
+        document.getElementById("quiz-section").style.display = "none";
+
+        document.getElementById("result-section").style.display = "block";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        /*
+           Count the selected answers.
+           Each answer represents a different
+           personality/style category.
+        */
+
+        let styleScores = {
+            elegant: 0,
+            glamorous: 0,
+            edgy: 0,
+            romantic: 0
+        };
+
+
+        userAnswers.forEach((answer, questionIndex) => {
+
+            if (answer === 0) {
+                styleScores.elegant++;
+            }
+
+            if (answer === 1) {
+                styleScores.glamorous++;
+            }
+
+            if (answer === 2) {
+                styleScores.edgy++;
+            }
+
+            if (answer === 3) {
+                styleScores.romantic++;
+            }
+
+        });
+
+
+        let highestStyle = "elegant";
+
+        let highestScore = styleScores.elegant;
+
+
+        for (let style in styleScores) {
+
+            if (styleScores[style] > highestScore) {
+
+                highestScore = styleScores[style];
+
+                highestStyle = style;
+
+            }
+
+        }
+
+
+        displayResult(highestStyle);
+
+    }
+
+
+    /* =========================
+       RESULT INFORMATION
+    ========================= */
+
+    function displayResult(style) {
+
+        const title = document.getElementById("resultTitle");
+
+        const description = document.getElementById("resultDescription");
+
+        const products = document.getElementById("products");
+
+
+        products.innerHTML = "";
+
+
+        if (style === "elegant") {
+
+            title.textContent = "✨ Elegant Minimalist";
+
+            description.textContent =
+                "You love simple, timeless pieces that add a subtle touch of elegance to your look. Your perfect jewelry is delicate, sophisticated and easy to wear every day.";
+
+
+            createProduct("🤍", "Pearl Drop Earrings", "$45");
+
+            createProduct("💍", "Classic Gold Ring", "$55");
+
+            createProduct("📿", "Fine Chain Necklace", "$65");
+
+        }
+
+
+        else if (style === "glamorous") {
+
+            title.textContent = "👑 Glamorous Icon";
+
+            description.textContent =
+                "You love making a statement. Sparkling stones, bold designs and luxurious details are perfect for your glamorous personality.";
+
+
+            createProduct("💎", "Crystal Statement Necklace", "$95");
+
+            createProduct("✨", "Diamond Style Earrings", "$85");
+
+            createProduct("👑", "Luxury Gold Bracelet", "$110");
+
+        }
+
+
+        else if (style === "edgy") {
+
+            title.textContent = "🖤 Bold & Edgy";
+
+            description.textContent =
+                "You are confident and expressive. You love unique pieces that stand out and show your personality.";
+
+
+            createProduct("🖤", "Black Statement Ring", "$50");
+
+            createProduct("⛓️", "Bold Chain Necklace", "$75");
+
+            createProduct("⚡", "Lightning Earrings", "$60");
+
+        }
+
+
+        else {
+
+            title.textContent = "🌸 Romantic Dreamer";
+
+            description.textContent =
+                "You love soft, beautiful and feminine jewelry. Pearls, delicate shapes and romantic details are perfect for your style.";
+
+
+            createProduct("🌸", "Rose Charm Necklace", "$60");
+
+            createProduct("💕", "Heart Bracelet", "$50");
+
+            createProduct("🌷", "Floral Earrings", "$45");
+
+        }
+
+    }
+
+
+    /* =========================
+       CREATE PRODUCTS
+    ========================= */
+
+    function createProduct(icon, name, price) {
+
+        const products = document.getElementById("products");
+
+
+        const product = document.createElement("div");
+
+        product.classList.add("product");
+
+
+        product.innerHTML = `
+
+            <div class="product-image">
+                ${icon}
+            </div>
+
+            <h3>
+                ${name}
+            </h3>
+
+            <p>
+                ${price}
+            </p>
+
+        `;
+
+
+        products.appendChild(product);
+
+    }
+
+</script>
+
+</body>
+</html>
+```
