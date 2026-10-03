@@ -1,25 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ZAI Jewelry | Find Your Style</title>
 
+
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+
     <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Georgia", serif;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background: #faf7f2;
             color: #2d2926;
         }
+
 
         /* =========================
            NAVIGATION
@@ -35,7 +51,7 @@
             border-bottom: 1px solid #eee5db;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .logo {
@@ -61,6 +77,7 @@
         nav ul li a:hover {
             color: #b58b62;
         }
+
 
         /* =========================
            HERO
@@ -117,17 +134,49 @@
             transform: translateY(-2px);
         }
 
+        .main-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+
+        /* Decorative hero area */
+
         .hero-jewelry {
             width: 40%;
             height: 430px;
+
             background:
-                radial-gradient(circle at 30% 35%, #ffffff 0 7%, transparent 8%),
-                radial-gradient(circle at 65% 55%, #e8cfae 0 12%, transparent 13%),
-                radial-gradient(circle at 45% 70%, #d9b98f 0 8%, transparent 9%),
-                linear-gradient(145deg, #e9ddd0, #fdfbf8);
+                radial-gradient(
+                    circle at 30% 35%,
+                    #ffffff 0 7%,
+                    transparent 8%
+                ),
+
+                radial-gradient(
+                    circle at 65% 55%,
+                    #e8cfae 0 12%,
+                    transparent 13%
+                ),
+
+                radial-gradient(
+                    circle at 45% 70%,
+                    #d9b98f 0 8%,
+                    transparent 9%
+                ),
+
+                linear-gradient(
+                    145deg,
+                    #e9ddd0,
+                    #fdfbf8
+                );
+
             border-radius: 50% 50% 10px 10px;
+
             position: relative;
-            box-shadow: 0 20px 50px rgba(70, 50, 30, 0.12);
+
+            box-shadow:
+                0 20px 50px rgba(70, 50, 30, 0.12);
         }
 
         .hero-jewelry::before {
@@ -147,6 +196,7 @@
             font-size: 130px;
             color: #b98d62;
         }
+
 
         /* =========================
            FEATURES
@@ -186,7 +236,8 @@
 
         .feature:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .feature-icon {
@@ -204,6 +255,7 @@
             line-height: 1.6;
         }
 
+
         /* =========================
            QUIZ
         ========================= */
@@ -220,7 +272,8 @@
             margin: auto;
             background: white;
             padding: 45px;
-            box-shadow: 0 15px 50px rgba(60,40,20,0.1);
+            box-shadow:
+                0 15px 50px rgba(60, 40, 20, 0.1);
         }
 
         .quiz-header {
@@ -309,6 +362,7 @@
             color: white;
         }
 
+
         /* =========================
            RESULTS
         ========================= */
@@ -345,10 +399,6 @@
             color: #666;
         }
 
-        /* =========================
-           RECOMMENDED FOR YOU
-        ========================= */
-
         .recommendations {
             margin-top: 55px;
         }
@@ -360,17 +410,24 @@
             margin-top: 30px;
         }
 
+
+        /* =========================
+           PRODUCT CARDS
+        ========================= */
+
         .product {
             background: white;
             padding-bottom: 25px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            box-shadow:
+                0 5px 25px rgba(0, 0, 0, 0.06);
             transition: 0.3s;
             overflow: hidden;
         }
 
         .product:hover {
             transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.12);
         }
 
         .product-image {
@@ -385,11 +442,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: 0.4s;
-        }
-
-        .product:hover .product-image img {
-            transform: scale(1.05);
         }
 
         .product h3 {
@@ -403,31 +455,251 @@
             font-size: 16px;
         }
 
+
+        /* =========================
+           VIRTUAL TRY ON
+        ========================= */
+
+        .try-on-section {
+            margin: 70px auto 20px;
+            padding: 45px 25px;
+
+            max-width: 760px;
+
+            background: #fffdf9;
+
+            border: 1px solid #eee3d8;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 40px rgba(70, 50, 30, 0.06);
+        }
+
+        .try-on-label {
+            color: #a47b56;
+            letter-spacing: 3px;
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+
+        .try-on-section h2 {
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .try-on-description {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            color: #777;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+
+        /* Camera */
+
+        .camera-circle {
+            position: relative;
+
+            width: 350px;
+            height: 350px;
+
+            max-width: 85vw;
+            max-height: 85vw;
+
+            margin: 0 auto 22px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #eee5dc,
+                    #f9f4ef
+                );
+
+            border: 5px solid #d4b28d;
+
+            box-shadow:
+                0 10px 35px rgba(100, 70, 40, 0.15);
+        }
+
+
+        #tryOnVideo,
+        #tryOnCanvas {
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+        }
+
+
+        #tryOnVideo {
+
+            transform: scaleX(-1);
+
+            display: none;
+
+            z-index: 1;
+        }
+
+
+        #tryOnCanvas {
+
+            z-index: 2;
+
+            pointer-events: none;
+        }
+
+
+        /* Camera placeholder */
+
+        .camera-placeholder {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px;
+
+            color: #8b6849;
+
+            z-index: 3;
+        }
+
+        .camera-placeholder span {
+
+            font-size: 60px;
+
+            margin-bottom: 18px;
+        }
+
+        .camera-placeholder p {
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            max-width: 220px;
+        }
+
+
+        .camera-status {
+
+            font-size: 14px;
+
+            color: #786858;
+
+            margin: 15px auto 22px;
+
+            max-width: 500px;
+
+            line-height: 1.6;
+
+            min-height: 22px;
+        }
+
+
+        .stop-camera-btn {
+
+            margin-top: 15px;
+
+            background: transparent;
+
+            border: 1px solid #9b7653;
+
+            color: #9b7653;
+
+            padding: 13px 25px;
+
+            cursor: pointer;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s;
+        }
+
+        .stop-camera-btn:hover {
+
+            background: #f3e9df;
+        }
+
+
+        .privacy-note {
+
+            max-width: 500px;
+
+            margin: 22px auto 0;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            color: #888;
+        }
+
+
+        /* =========================
+           RETAKE BUTTON
+        ========================= */
+
         .retake {
+
             margin-top: 45px;
         }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
+
             background: #292420;
+
             color: white;
+
             text-align: center;
+
             padding: 40px 20px;
         }
 
         footer .footer-logo {
+
             font-size: 25px;
+
             letter-spacing: 5px;
+
             margin-bottom: 15px;
         }
 
         footer p {
+
             color: #c9c2bc;
+
             font-size: 13px;
         }
+
 
         /* =========================
            MOBILE
@@ -444,8 +716,11 @@
             }
 
             .hero {
+
                 flex-direction: column;
+
                 text-align: center;
+
                 padding: 60px 7%;
             }
 
@@ -458,45 +733,77 @@
             }
 
             .hero p {
+
                 margin-left: auto;
+
                 margin-right: auto;
             }
 
             .hero-jewelry {
+
                 width: 90%;
+
                 height: 300px;
+
                 margin-top: 45px;
             }
 
             .answers {
+
                 grid-template-columns: 1fr;
             }
 
             .quiz-box {
+
                 padding: 30px 20px;
             }
 
             .question {
+
                 font-size: 24px;
             }
 
             .products {
+
                 grid-template-columns: 1fr;
             }
 
             .result-title {
+
                 font-size: 38px;
             }
 
             .product-image {
+
                 height: 280px;
             }
+
+            .try-on-section {
+
+                padding: 35px 15px;
+            }
+
+            .try-on-section h2 {
+
+                font-size: 30px;
+            }
+
+            .camera-circle {
+
+                width: 300px;
+
+                height: 300px;
+            }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
 <!-- =========================
      NAVIGATION
@@ -504,23 +811,41 @@
 
 <nav>
 
-    <div class="logo">ZAI</div>
+    <div class="logo">
+        ZAI
+    </div>
+
 
     <ul>
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#collections">COLLECTIONS</a></li>
-        <li><a href="#quiz-section">STYLE QUIZ</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+
+        <li>
+            <a href="#home">HOME</a>
+        </li>
+
+        <li>
+            <a href="#collections">COLLECTIONS</a>
+        </li>
+
+        <li>
+            <a href="#quiz-section">STYLE QUIZ</a>
+        </li>
+
+        <li>
+            <a href="#contact">CONTACT</a>
+        </li>
+
     </ul>
 
 </nav>
 
 
+
 <!-- =========================
-     HOME
+     HERO
 ========================= -->
 
 <section class="hero" id="home">
+
 
     <div class="hero-text">
 
@@ -528,10 +853,12 @@
             DISCOVER YOUR STYLE
         </div>
 
+
         <h1>
             Jewelry that<br>
             feels like you.
         </h1>
+
 
         <p>
             Not sure which jewelry style matches your personality?
@@ -539,80 +866,110 @@
             that were made for you.
         </p>
 
-        <button class="main-btn" onclick="startQuiz()">
+
+        <button
+            class="main-btn"
+            onclick="startQuiz()">
+
             TAKE THE QUIZ ✦
+
         </button>
 
     </div>
+
 
     <div class="hero-jewelry"></div>
 
 </section>
 
 
+
 <!-- =========================
      FEATURES
 ========================= -->
 
-<section class="features" id="collections">
+<section
+    class="features"
+    id="collections">
+
 
     <h2 class="section-title">
+
         Find Your Perfect Match
+
     </h2>
 
+
     <p class="section-subtitle">
+
         Discover jewelry based on your personality and style.
+
     </p>
+
 
     <div class="feature-container">
 
+
         <div class="feature">
 
-            <div class="feature-icon">💎</div>
+            <div class="feature-icon">
+                💎
+            </div>
 
             <h3>
                 Personal Style
             </h3>
 
             <p>
-                Discover the jewelry aesthetic that matches your personality.
+                Discover the jewelry aesthetic
+                that matches your personality.
             </p>
 
         </div>
 
 
+
         <div class="feature">
 
-            <div class="feature-icon">✨</div>
+            <div class="feature-icon">
+                ✨
+            </div>
 
             <h3>
                 Curated Pieces
             </h3>
 
             <p>
-                Get jewelry recommendations selected especially for your style.
+                Get jewelry recommendations
+                selected especially for your style.
             </p>
 
         </div>
 
 
+
         <div class="feature">
 
-            <div class="feature-icon">💕</div>
+            <div class="feature-icon">
+                💕
+            </div>
 
             <h3>
                 Made For You
             </h3>
 
             <p>
-                Find pieces that fit your everyday look and special moments.
+                Find pieces that fit your everyday
+                look and special moments.
             </p>
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -621,50 +978,85 @@
 
 <section id="quiz-section">
 
+
     <div class="quiz-box">
+
 
         <div class="quiz-header">
 
-            <div class="question-number" id="questionNumber">
+
+            <div
+                class="question-number"
+                id="questionNumber">
+
                 QUESTION 1 OF 5
+
             </div>
 
+
             <h2>
+
                 Find Your Jewelry Style
+
             </h2>
+
 
             <div class="progress-container">
 
-                <div class="progress" id="progress"></div>
+                <div
+                    class="progress"
+                    id="progress">
+                </div>
 
             </div>
+
 
         </div>
 
 
-        <h3 class="question" id="question">
+        <h3
+            class="question"
+            id="question">
+
             Which jewelry color do you prefer?
+
         </h3>
 
 
-        <div class="answers" id="answers"></div>
+        <div
+            class="answers"
+            id="answers">
+        </div>
 
 
         <div class="quiz-buttons">
 
-            <button class="quiz-btn" onclick="previousQuestion()">
+
+            <button
+                class="quiz-btn"
+                onclick="previousQuestion()">
+
                 ← BACK
+
             </button>
 
-            <button class="quiz-btn" onclick="nextQuestion()">
+
+            <button
+                class="quiz-btn"
+                onclick="nextQuestion()">
+
                 NEXT →
+
             </button>
+
 
         </div>
+
 
     </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -673,42 +1065,193 @@
 
 <section id="result-section">
 
+
     <div class="result-box">
 
+
         <div class="result-label">
+
             YOUR JEWELRY STYLE IS
+
         </div>
 
-        <h1 class="result-title" id="resultTitle">
+
+        <h1
+            class="result-title"
+            id="resultTitle">
+
             Elegant Minimalist
+
         </h1>
 
-        <p class="result-description" id="resultDescription">
-            You love simple, timeless pieces that add a subtle touch
-            of elegance to your look.
+
+        <p
+            class="result-description"
+            id="resultDescription">
+
+            You love simple, timeless pieces that
+            add a subtle touch of elegance to your look.
+
         </p>
 
 
-        <!-- RECOMMENDED FOR YOU -->
+
+        <!-- =========================
+             RECOMMENDATIONS
+        ========================= -->
 
         <div class="recommendations">
 
+
             <h2 class="section-title">
+
                 Recommended For You
+
             </h2>
 
-            <div class="products" id="products"></div>
+
+            <div
+                class="products"
+                id="products">
+            </div>
+
 
         </div>
 
 
-        <button class="main-btn retake" onclick="startQuiz()">
+
+        <!-- =========================
+             VIRTUAL TRY ON
+        ========================= -->
+
+        <div class="try-on-section">
+
+
+            <p class="try-on-label">
+
+                YOUR VIRTUAL JEWELRY STUDIO
+
+            </p>
+
+
+            <h2>
+
+                Try It On ✨
+
+            </h2>
+
+
+            <p class="try-on-description">
+
+                See how a ring looks on your hand in real time.
+                Allow camera access to try on your recommended ring virtually.
+
+            </p>
+
+
+
+            <div class="camera-circle">
+
+
+                <video
+                    id="tryOnVideo"
+                    autoplay
+                    playsinline
+                    muted>
+                </video>
+
+
+                <canvas
+                    id="tryOnCanvas"
+                    width="480"
+                    height="480">
+                </canvas>
+
+
+                <div
+                    class="camera-placeholder"
+                    id="cameraPlaceholder">
+
+
+                    <span>
+                        💍
+                    </span>
+
+
+                    <p>
+
+                        Your camera preview
+                        will appear here.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <p
+                id="cameraStatus"
+                class="camera-status">
+
+                Click below to enable your camera.
+
+            </p>
+
+
+
+            <button
+                class="main-btn"
+                id="startCameraBtn"
+                onclick="startTryOn()">
+
+                ALLOW CAMERA & TRY ON
+
+            </button>
+
+
+
+            <button
+                class="stop-camera-btn"
+                id="stopCameraBtn"
+                onclick="stopTryOn()"
+                style="display:none;">
+
+                TURN OFF CAMERA
+
+            </button>
+
+
+            <p class="privacy-note">
+
+                Your camera is used for the live preview
+                on this page. You can turn it off at any time.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- RETAKE -->
+
+        <button
+            class="main-btn retake"
+            onclick="startQuiz()">
+
             RETAKE QUIZ
+
         </button>
+
 
     </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -717,42 +1260,45 @@
 
 <footer id="contact">
 
+
     <div class="footer-logo">
+
         ZAI
+
     </div>
 
+
     <p>
+
         Jewelry made to reflect who you are.
+
     </p>
+
 
     <br>
 
+
     <p>
+
         © 2026 ZAI Jewelry. All Rights Reserved.
+
     </p>
 
-    <br>
-
-    <p>
-        Mobile number: (+66) 990270018
-    </p>
-
-    <br>
-
-    <p>
-        Gmail: hashimizainab24@gmail.com
-    </p>
 
 </footer>
 
 
+
 <script>
 
-/* =========================
-   QUIZ QUESTIONS
-========================= */
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
 
 const questions = [
+
 
     {
         question: "Which jewelry color do you prefer?",
@@ -765,6 +1311,7 @@ const questions = [
         ]
     },
 
+
     {
         question: "What's your personal style?",
 
@@ -775,6 +1322,7 @@ const questions = [
             "Cute & Feminine"
         ]
     },
+
 
     {
         question: "When do you usually wear jewelry?",
@@ -787,6 +1335,7 @@ const questions = [
         ]
     },
 
+
     {
         question: "Which jewelry piece do you love most?",
 
@@ -797,6 +1346,7 @@ const questions = [
             "Bracelets"
         ]
     },
+
 
     {
         question: "Pick the vibe that feels most like you.",
@@ -817,120 +1367,203 @@ let currentQuestion = 0;
 let userAnswers = [];
 
 
-/* =========================
+
+/* =========================================================
    START QUIZ
-========================= */
+========================================================= */
+
 
 function startQuiz() {
+
+
+    /* Stop camera if it is running */
+
+    stopTryOn();
+
 
     currentQuestion = 0;
 
     userAnswers = [];
 
-    document.querySelector(".hero").style.display = "none";
 
-    document.querySelector(".features").style.display = "none";
+    document.querySelector(".hero").style.display =
+        "none";
 
-    document.querySelector("#result-section").style.display = "none";
 
-    document.querySelector("#quiz-section").style.display = "block";
+    document.querySelector(".features").style.display =
+        "none";
+
+
+    document.querySelector("#result-section").style.display =
+        "none";
+
+
+    document.querySelector("#quiz-section").style.display =
+        "block";
+
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
+
 
     showQuestion();
 
 }
 
 
-/* =========================
-   DISPLAY QUESTION
-========================= */
+
+/* =========================================================
+   SHOW QUESTION
+========================================================= */
+
 
 function showQuestion() {
 
-    const q = questions[currentQuestion];
 
-    document.getElementById("question").textContent = q.question;
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById("question").textContent =
+        q.question;
+
 
     document.getElementById("questionNumber").textContent =
-        "QUESTION " + (currentQuestion + 1) +
-        " OF " + questions.length;
+
+        "QUESTION " +
+
+        (currentQuestion + 1) +
+
+        " OF " +
+
+        questions.length;
+
 
     document.getElementById("progress").style.width =
-        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+        (
+            (currentQuestion + 1) /
+            questions.length *
+            100
+        ) +
+
+        "%";
 
 
     const answersContainer =
         document.getElementById("answers");
 
+
     answersContainer.innerHTML = "";
 
 
-    q.answers.forEach((answer, index) => {
-
-        const button = document.createElement("div");
-
-        button.classList.add("answer");
-
-        button.textContent = answer;
+    q.answers.forEach(
+        (answer, index) => {
 
 
-        if (userAnswers[currentQuestion] === index) {
+            const button =
+                document.createElement("div");
 
-            button.classList.add("selected");
+
+            button.classList.add("answer");
+
+
+            button.textContent =
+                answer;
+
+
+            if (
+                userAnswers[currentQuestion]
+                === index
+            ) {
+
+                button.classList.add("selected");
+
+            }
+
+
+            button.onclick =
+                function () {
+
+
+                    userAnswers[currentQuestion] =
+                        index;
+
+
+                    document
+                        .querySelectorAll(".answer")
+                        .forEach(btn => {
+
+                            btn.classList.remove(
+                                "selected"
+                            );
+
+                        });
+
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
 
         }
-
-
-        button.onclick = function() {
-
-            userAnswers[currentQuestion] = index;
-
-            document.querySelectorAll(".answer").forEach(btn => {
-
-                btn.classList.remove("selected");
-
-            });
-
-            button.classList.add("selected");
-
-        };
-
-
-        answersContainer.appendChild(button);
-
-    });
+    );
 
 }
 
 
-/* =========================
+
+/* =========================================================
    NEXT QUESTION
-========================= */
+========================================================= */
+
 
 function nextQuestion() {
 
-    if (userAnswers[currentQuestion] === undefined) {
 
-        alert("Please choose an answer first ✨");
+    if (
+        userAnswers[currentQuestion]
+        === undefined
+    ) {
+
+
+        alert(
+            "Please choose an answer first ✨"
+        );
+
 
         return;
 
     }
 
 
-    if (currentQuestion < questions.length - 1) {
+    if (
+        currentQuestion
+        <
+        questions.length - 1
+    ) {
+
 
         currentQuestion++;
 
+
         showQuestion();
 
-    }
 
-    else {
+    } else {
+
 
         showResult();
 
@@ -939,15 +1572,20 @@ function nextQuestion() {
 }
 
 
-/* =========================
+
+/* =========================================================
    PREVIOUS QUESTION
-========================= */
+========================================================= */
+
 
 function previousQuestion() {
 
+
     if (currentQuestion > 0) {
 
+
         currentQuestion--;
+
 
         showQuestion();
 
@@ -956,23 +1594,36 @@ function previousQuestion() {
 }
 
 
-/* =========================
-   CALCULATE RESULT
-========================= */
+
+/* =========================================================
+   SHOW RESULT
+========================================================= */
+
 
 function showResult() {
 
-    document.getElementById("quiz-section").style.display = "none";
 
-    document.getElementById("result-section").style.display = "block";
+    document.getElementById(
+        "quiz-section"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "result-section"
+    ).style.display = "block";
+
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 
     let styleScores = {
+
 
         elegant: 0,
 
@@ -985,208 +1636,319 @@ function showResult() {
     };
 
 
-    userAnswers.forEach((answer) => {
+    userAnswers.forEach(
+        (answer) => {
 
-        if (answer === 0) {
 
-            styleScores.elegant++;
+            if (answer === 0) {
+
+                styleScores.elegant++;
+
+            }
+
+
+            if (answer === 1) {
+
+                styleScores.glamorous++;
+
+            }
+
+
+            if (answer === 2) {
+
+                styleScores.edgy++;
+
+            }
+
+
+            if (answer === 3) {
+
+                styleScores.romantic++;
+
+            }
 
         }
-
-        if (answer === 1) {
-
-            styleScores.glamorous++;
-
-        }
-
-        if (answer === 2) {
-
-            styleScores.edgy++;
-
-        }
-
-        if (answer === 3) {
-
-            styleScores.romantic++;
-
-        }
-
-    });
+    );
 
 
-    let highestStyle = "elegant";
+    let highestStyle =
+        "elegant";
 
-    let highestScore = styleScores.elegant;
+
+    let highestScore =
+        styleScores.elegant;
 
 
-    for (let style in styleScores) {
+    for (
+        let style in styleScores
+    ) {
 
-        if (styleScores[style] > highestScore) {
 
-            highestScore = styleScores[style];
+        if (
+            styleScores[style]
+            >
+            highestScore
+        ) {
 
-            highestStyle = style;
+
+            highestScore =
+                styleScores[style];
+
+
+            highestStyle =
+                style;
 
         }
 
     }
 
 
-    displayResult(highestStyle);
+    displayResult(
+        highestStyle
+    );
 
 }
 
 
-/* =========================
-   RESULT INFORMATION
-========================= */
+
+/* =========================================================
+   DISPLAY RESULT
+========================================================= */
+
 
 function displayResult(style) {
 
+
     const title =
-        document.getElementById("resultTitle");
+        document.getElementById(
+            "resultTitle"
+        );
+
 
     const description =
-        document.getElementById("resultDescription");
+        document.getElementById(
+            "resultDescription"
+        );
+
 
     const products =
-        document.getElementById("products");
+        document.getElementById(
+            "products"
+        );
 
 
     products.innerHTML = "";
 
 
-    /* =========================
-       ELEGANT
-    ========================= */
 
-    if (style === "elegant") {
+    /* =====================================================
+       ELEGANT
+    ===================================================== */
+
+    if (
+        style === "elegant"
+    ) {
+
 
         title.textContent =
             "✨ Elegant Minimalist";
 
+
         description.textContent =
+
             "You love simple, timeless pieces that add a subtle touch of elegance to your look. Your perfect jewelry is delicate, sophisticated and easy to wear every day.";
 
 
         createProduct(
+
             "Pearl Drop Earrings",
+
             "$45",
+
             "pearl.png"
+
         );
 
+
         createProduct(
+
             "Classic Gold Ring",
+
             "$55",
+
             "gold.png"
+
         );
 
+
         createProduct(
+
             "Fine Chain Necklace",
+
             "$65",
+
             "chain.png"
+
         );
 
     }
 
 
-    /* =========================
-       GLAMOROUS
-    ========================= */
 
-    else if (style === "glamorous") {
+    /* =====================================================
+       GLAMOROUS
+    ===================================================== */
+
+    else if (
+        style === "glamorous"
+    ) {
+
 
         title.textContent =
             "👑 Glamorous Icon";
 
+
         description.textContent =
+
             "You love making a statement. Sparkling stones, bold designs and luxurious details are perfect for your glamorous personality.";
 
 
         createProduct(
+
             "Crystal Statement Necklace",
+
             "$95",
+
             "crystle.png"
+
         );
 
+
         createProduct(
+
             "Diamond Style Earrings",
+
             "$85",
+
             "diamond.png"
+
         );
 
+
         createProduct(
+
             "Luxury Gold Bracelet",
+
             "$110",
+
             "bracelet.png"
+
         );
 
     }
 
 
-    /* =========================
-       EDGY
-    ========================= */
 
-    else if (style === "edgy") {
+    /* =====================================================
+       EDGY
+    ===================================================== */
+
+    else if (
+        style === "edgy"
+    ) {
+
 
         title.textContent =
             "🖤 Bold & Edgy";
 
+
         description.textContent =
+
             "You are confident and expressive. You love unique pieces that stand out and show your personality.";
 
 
         createProduct(
+
             "Black Statement Ring",
+
             "$50",
+
             "black.png"
+
         );
 
+
         createProduct(
+
             "Bold Chain Necklace",
+
             "$75",
+
             "bold.png"
+
         );
 
+
         createProduct(
+
             "Lightning Earrings",
+
             "$60",
+
             "lightning.png"
+
         );
 
     }
 
 
-    /* =========================
+
+    /* =====================================================
        ROMANTIC
-    ========================= */
+    ===================================================== */
 
     else {
+
 
         title.textContent =
             "🌸 Romantic Dreamer";
 
+
         description.textContent =
+
             "You love soft, beautiful and feminine jewelry. Pearls, delicate shapes and romantic details are perfect for your style.";
 
 
         createProduct(
+
             "Rose Charm Necklace",
+
             "$60",
+
             "rose.png"
+
         );
 
+
         createProduct(
+
             "Heart Bracelet",
+
             "$50",
+
             "heart.png"
+
         );
 
+
         createProduct(
+
             "Floral Earrings",
+
             "$45",
+
             "floral.png"
+
         );
 
     }
@@ -1194,20 +1956,34 @@ function displayResult(style) {
 }
 
 
-/* =========================
-   CREATE PRODUCT CARDS
-========================= */
 
-function createProduct(name, price, image) {
+/* =========================================================
+   CREATE PRODUCT
+========================================================= */
+
+
+function createProduct(
+    name,
+    price,
+    image
+) {
+
 
     const products =
-        document.getElementById("products");
+        document.getElementById(
+            "products"
+        );
 
 
     const product =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    product.classList.add("product");
+
+    product.classList.add(
+        "product"
+    );
 
 
     product.innerHTML = `
@@ -1217,7 +1993,7 @@ function createProduct(name, price, image) {
             <img
                 src="${image}"
                 alt="${name}"
-                onerror="this.src='https://via.placeholder.com/500x500/f1e7dd/9b7653?text=ZAI+Jewelry';"
+                onerror="this.style.display='none';"
             >
 
         </div>
@@ -1233,12 +2009,838 @@ function createProduct(name, price, image) {
     `;
 
 
-    products.appendChild(product);
+    products.appendChild(
+        product
+    );
 
 }
 
+
+
+/* =========================================================
+   VIRTUAL TRY-ON
+========================================================= */
+
+
+let tryOnStream = null;
+
+let handTracker = null;
+
+let trackingActive = false;
+
+
+const tryOnVideo =
+    document.getElementById(
+        "tryOnVideo"
+    );
+
+
+const tryOnCanvas =
+    document.getElementById(
+        "tryOnCanvas"
+    );
+
+
+const tryOnContext =
+    tryOnCanvas.getContext(
+        "2d"
+    );
+
+
+const cameraStatus =
+    document.getElementById(
+        "cameraStatus"
+    );
+
+
+const cameraPlaceholder =
+    document.getElementById(
+        "cameraPlaceholder"
+    );
+
+
+const startCameraBtn =
+    document.getElementById(
+        "startCameraBtn"
+    );
+
+
+const stopCameraBtn =
+    document.getElementById(
+        "stopCameraBtn"
+    );
+
+
+
+/* =========================================================
+   START CAMERA
+========================================================= */
+
+
+async function startTryOn() {
+
+
+    if (trackingActive) {
+
+        return;
+
+    }
+
+
+    if (
+        !navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia
+    ) {
+
+
+        cameraStatus.textContent =
+
+            "Camera access is not available here. Please open the website using HTTPS or localhost.";
+
+        return;
+
+    }
+
+
+    startCameraBtn.disabled =
+        true;
+
+
+    cameraStatus.textContent =
+
+        "Requesting camera permission...";
+
+
+    try {
+
+
+        /*
+           Ask browser for camera permission.
+        */
+
+        tryOnStream =
+            await navigator.mediaDevices
+                .getUserMedia({
+
+                    video: {
+
+                        facingMode: "user"
+
+                    },
+
+                    audio: false
+
+                });
+
+
+        tryOnVideo.srcObject =
+            tryOnStream;
+
+
+        await tryOnVideo.play();
+
+
+
+        /*
+           Create MediaPipe hand tracker.
+        */
+
+        if (!handTracker) {
+
+
+            handTracker =
+                new Hands({
+
+                    locateFile:
+                        function(file) {
+
+                            return (
+                                "https://cdn.jsdelivr.net/npm/@mediapipe/hands/"
+                                +
+                                file
+                            );
+
+                        }
+
+                });
+
+
+            handTracker.setOptions({
+
+                maxNumHands: 1,
+
+                modelComplexity: 1,
+
+                minDetectionConfidence: 0.6,
+
+                minTrackingConfidence: 0.6
+
+            });
+
+
+            handTracker.onResults(
+                drawVirtualRing
+            );
+
+        }
+
+
+
+        trackingActive =
+            true;
+
+
+        tryOnVideo.style.display =
+            "block";
+
+
+        cameraPlaceholder.style.display =
+            "none";
+
+
+        startCameraBtn.style.display =
+            "none";
+
+
+        stopCameraBtn.style.display =
+            "inline-block";
+
+
+        cameraStatus.textContent =
+
+            "Show one hand inside the circle and keep your fingers visible.";
+
+
+        trackHandFrames();
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+            "Camera error:",
+            error
+        );
+
+
+        stopTryOn();
+
+
+        if (
+            error.name ===
+            "NotAllowedError"
+            ||
+            error.name ===
+            "PermissionDeniedError"
+        ) {
+
+
+            cameraStatus.textContent =
+
+                "Camera permission was denied. Please allow camera access in your browser settings and try again.";
+
+        }
+
+
+        else if (
+            error.name ===
+            "NotFoundError"
+        ) {
+
+
+            cameraStatus.textContent =
+
+                "No camera was found on this device.";
+
+        }
+
+
+        else {
+
+
+            cameraStatus.textContent =
+
+                "The camera could not start. Please check your camera and try again.";
+
+        }
+
+    }
+
+
+    finally {
+
+        startCameraBtn.disabled =
+            false;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TRACK HAND
+========================================================= */
+
+
+async function trackHandFrames() {
+
+
+    if (!trackingActive) {
+
+        return;
+
+    }
+
+
+    try {
+
+
+        if (
+            tryOnVideo.readyState >= 2
+            &&
+            handTracker
+        ) {
+
+
+            await handTracker.send({
+
+                image:
+                    tryOnVideo
+
+            });
+
+        }
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+            "Hand tracking error:",
+            error
+        );
+
+    }
+
+
+    if (trackingActive) {
+
+
+        requestAnimationFrame(
+            trackHandFrames
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   DRAW VIRTUAL RING
+========================================================= */
+
+
+function drawVirtualRing(
+    results
+) {
+
+
+    const canvas =
+        tryOnCanvas;
+
+
+    const ctx =
+        tryOnContext;
+
+
+    ctx.clearRect(
+
+        0,
+
+        0,
+
+        canvas.width,
+
+        canvas.height
+
+    );
+
+
+    if (
+        !results.multiHandLandmarks
+        ||
+        results.multiHandLandmarks.length === 0
+    ) {
+
+
+        cameraStatus.textContent =
+
+            "Show your hand inside the circle so the ring can follow your finger.";
+
+        return;
+
+    }
+
+
+    const landmarks =
+        results.multiHandLandmarks[0];
+
+
+    /*
+       Ring finger landmarks.
+
+       13 = ring finger base
+       14 = next ring finger joint
+    */
+
+    const base =
+        landmarks[13];
+
+
+    const nextJoint =
+        landmarks[14];
+
+
+    const imageWidth =
+        tryOnVideo.videoWidth;
+
+
+    const imageHeight =
+        tryOnVideo.videoHeight;
+
+
+    if (
+        !imageWidth ||
+        !imageHeight
+    ) {
+
+        return;
+
+    }
+
+
+
+    /*
+       Fit camera image into square.
+    */
+
+    const scale =
+        Math.max(
+
+            canvas.width /
+                imageWidth,
+
+            canvas.height /
+                imageHeight
+
+        );
+
+
+    const offsetX =
+        (
+            canvas.width
+            -
+            imageWidth * scale
+        ) / 2;
+
+
+    const offsetY =
+        (
+            canvas.height
+            -
+            imageHeight * scale
+        ) / 2;
+
+
+
+    function toCanvas(point) {
+
+
+        return {
+
+            x:
+                point.x *
+                imageWidth *
+                scale
+                +
+                offsetX,
+
+            y:
+                point.y *
+                imageHeight *
+                scale
+                +
+                offsetY
+
+        };
+
+    }
+
+
+
+    const p1 =
+        toCanvas(base);
+
+
+    const p2 =
+        toCanvas(nextJoint);
+
+
+
+    const dx =
+        p2.x -
+        p1.x;
+
+
+    const dy =
+        p2.y -
+        p1.y;
+
+
+    const segmentLength =
+        Math.hypot(
+            dx,
+            dy
+        );
+
+
+    /*
+       Position ring near the
+       base of the ring finger.
+    */
+
+    const ringX =
+        p1.x +
+        dx * 0.35;
+
+
+    const ringY =
+        p1.y +
+        dy * 0.35;
+
+
+    /*
+       Rotate ring with finger.
+    */
+
+    const angle =
+        Math.atan2(
+            dy,
+            dx
+        )
+        +
+        Math.PI / 2;
+
+
+    /*
+       Ring size.
+    */
+
+    const radiusX =
+        Math.max(
+            5,
+            segmentLength * 0.23
+        );
+
+
+    const radiusY =
+        Math.max(
+            3,
+            segmentLength * 0.11
+        );
+
+
+
+    /*
+       Draw ring.
+    */
+
+    ctx.save();
+
+
+    /*
+       Mirror overlay so it matches
+       the selfie camera.
+    */
+
+    ctx.translate(
+        canvas.width,
+        0
+    );
+
+
+    ctx.scale(
+        -1,
+        1
+    );
+
+
+    ctx.translate(
+        ringX,
+        ringY
+    );
+
+
+    ctx.rotate(
+        angle
+    );
+
+
+
+    /*
+       Ring shadow.
+    */
+
+    ctx.beginPath();
+
+
+    ctx.ellipse(
+
+        1,
+
+        2,
+
+        radiusX * 1.05,
+
+        radiusY * 1.1,
+
+        0,
+
+        0,
+
+        Math.PI * 2
+
+    );
+
+
+    ctx.strokeStyle =
+        "rgba(65, 43, 20, 0.35)";
+
+
+    ctx.lineWidth =
+        Math.max(
+            2,
+            segmentLength * 0.12
+        );
+
+
+    ctx.stroke();
+
+
+
+    /*
+       Main gold band.
+    */
+
+    ctx.beginPath();
+
+
+    ctx.ellipse(
+
+        0,
+
+        0,
+
+        radiusX,
+
+        radiusY,
+
+        0,
+
+        0,
+
+        Math.PI * 2
+
+    );
+
+
+    ctx.strokeStyle =
+        "#d4af37";
+
+
+    ctx.lineWidth =
+        Math.max(
+            2,
+            segmentLength * 0.09
+        );
+
+
+    ctx.stroke();
+
+
+
+    /*
+       Gold highlight.
+    */
+
+    ctx.beginPath();
+
+
+    ctx.ellipse(
+
+        0,
+
+        -1,
+
+        radiusX * 0.92,
+
+        radiusY * 0.78,
+
+        0,
+
+        Math.PI * 1.05,
+
+        Math.PI * 1.95
+
+    );
+
+
+    ctx.strokeStyle =
+        "#fff0a8";
+
+
+    ctx.lineWidth =
+        Math.max(
+            1,
+            segmentLength * 0.035
+        );
+
+
+    ctx.stroke();
+
+
+
+    /*
+       Small diamond.
+    */
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+
+        0,
+
+        -radiusY * 0.8,
+
+        Math.max(
+            2,
+            segmentLength * 0.055
+        ),
+
+        0,
+
+        Math.PI * 2
+
+    );
+
+
+    ctx.fillStyle =
+        "#fff7d1";
+
+
+    ctx.fill();
+
+
+    ctx.strokeStyle =
+        "#b38b2d";
+
+
+    ctx.lineWidth =
+        1;
+
+
+    ctx.stroke();
+
+
+    ctx.restore();
+
+
+
+    cameraStatus.textContent =
+
+        "Ring preview active! Move your hand slowly to try it on.";
+
+}
+
+
+
+/* =========================================================
+   STOP CAMERA
+========================================================= */
+
+
+function stopTryOn() {
+
+
+    trackingActive =
+        false;
+
+
+    if (tryOnStream) {
+
+
+        tryOnStream
+            .getTracks()
+            .forEach(
+                track => track.stop()
+            );
+
+
+        tryOnStream =
+            null;
+
+    }
+
+
+    tryOnVideo.srcObject =
+        null;
+
+
+    tryOnVideo.style.display =
+        "none";
+
+
+    tryOnContext.clearRect(
+
+        0,
+
+        0,
+
+        tryOnCanvas.width,
+
+        tryOnCanvas.height
+
+    );
+
+
+    cameraPlaceholder.style.display =
+        "flex";
+
+
+    startCameraBtn.style.display =
+        "inline-block";
+
+
+    stopCameraBtn.style.display =
+        "none";
+
+
+    cameraStatus.textContent =
+
+        "Click below to enable your camera.";
+
+}
+
+
 </script>
 
+
 </body>
+
 </html>
-```
