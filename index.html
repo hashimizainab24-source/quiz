@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,7 @@
     <title>ZAI Jewelry | Find Your Style</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +21,10 @@
             color: #2d2926;
         }
 
-        /* NAVBAR */
+        /* =========================
+           NAVIGATION
+        ========================= */
+
         nav {
             height: 75px;
             background: #fffdf9;
@@ -58,7 +62,10 @@
             color: #b58b62;
         }
 
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
             min-height: 600px;
             display: flex;
@@ -141,7 +148,10 @@
             color: #b98d62;
         }
 
-        /* FEATURES */
+        /* =========================
+           FEATURES
+        ========================= */
+
         .features {
             padding: 80px 8%;
             text-align: center;
@@ -194,7 +204,10 @@
             line-height: 1.6;
         }
 
-        /* QUIZ */
+        /* =========================
+           QUIZ
+        ========================= */
+
         #quiz-section {
             display: none;
             min-height: 100vh;
@@ -296,7 +309,10 @@
             color: white;
         }
 
-        /* RESULTS */
+        /* =========================
+           RESULTS
+        ========================= */
+
         #result-section {
             display: none;
             min-height: 100vh;
@@ -306,7 +322,7 @@
         }
 
         .result-box {
-            max-width: 950px;
+            max-width: 1000px;
             margin: auto;
         }
 
@@ -329,6 +345,10 @@
             color: #666;
         }
 
+        /* =========================
+           RECOMMENDED FOR YOU
+        ========================= */
+
         .recommendations {
             margin-top: 55px;
         }
@@ -345,19 +365,31 @@
             padding-bottom: 25px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.06);
             transition: 0.3s;
+            overflow: hidden;
         }
 
         .product:hover {
             transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.10);
         }
 
         .product-image {
             height: 230px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
+            width: 100%;
+            overflow: hidden;
             background: #f1e7dd;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.4s;
+        }
+
+        .product:hover .product-image img {
+            transform: scale(1.05);
         }
 
         .product h3 {
@@ -368,13 +400,17 @@
         .product p {
             color: #9b7653;
             margin-top: 8px;
+            font-size: 16px;
         }
 
         .retake {
             margin-top: 45px;
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
             background: #292420;
             color: white;
@@ -393,7 +429,10 @@
             font-size: 13px;
         }
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 768px) {
 
             nav {
@@ -448,14 +487,23 @@
             .result-title {
                 font-size: 38px;
             }
+
+            .product-image {
+                height: 280px;
+            }
         }
+
     </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
+
     <div class="logo">ZAI</div>
 
     <ul>
@@ -464,10 +512,14 @@
         <li><a href="#quiz-section">STYLE QUIZ</a></li>
         <li><a href="#contact">CONTACT</a></li>
     </ul>
+
 </nav>
 
 
-<!-- HOME -->
+<!-- =========================
+     HOME
+========================= -->
+
 <section class="hero" id="home">
 
     <div class="hero-text">
@@ -498,7 +550,10 @@
 </section>
 
 
-<!-- FEATURES -->
+<!-- =========================
+     FEATURES
+========================= -->
+
 <section class="features" id="collections">
 
     <h2 class="section-title">
@@ -512,27 +567,47 @@
     <div class="feature-container">
 
         <div class="feature">
+
             <div class="feature-icon">💎</div>
-            <h3>Personal Style</h3>
+
+            <h3>
+                Personal Style
+            </h3>
+
             <p>
                 Discover the jewelry aesthetic that matches your personality.
             </p>
+
         </div>
 
+
         <div class="feature">
+
             <div class="feature-icon">✨</div>
-            <h3>Curated Pieces</h3>
+
+            <h3>
+                Curated Pieces
+            </h3>
+
             <p>
                 Get jewelry recommendations selected especially for your style.
             </p>
+
         </div>
 
+
         <div class="feature">
+
             <div class="feature-icon">💕</div>
-            <h3>Made For You</h3>
+
+            <h3>
+                Made For You
+            </h3>
+
             <p>
                 Find pieces that fit your everyday look and special moments.
             </p>
+
         </div>
 
     </div>
@@ -540,7 +615,10 @@
 </section>
 
 
-<!-- QUIZ -->
+<!-- =========================
+     QUIZ
+========================= -->
+
 <section id="quiz-section">
 
     <div class="quiz-box">
@@ -551,19 +629,26 @@
                 QUESTION 1 OF 5
             </div>
 
-            <h2>Find Your Jewelry Style</h2>
+            <h2>
+                Find Your Jewelry Style
+            </h2>
 
             <div class="progress-container">
+
                 <div class="progress" id="progress"></div>
+
             </div>
 
         </div>
+
 
         <h3 class="question" id="question">
             Which jewelry color do you prefer?
         </h3>
 
+
         <div class="answers" id="answers"></div>
+
 
         <div class="quiz-buttons">
 
@@ -582,7 +667,10 @@
 </section>
 
 
-<!-- RESULTS -->
+<!-- =========================
+     RESULTS
+========================= -->
+
 <section id="result-section">
 
     <div class="result-box">
@@ -596,9 +684,12 @@
         </h1>
 
         <p class="result-description" id="resultDescription">
-            You love simple, timeless pieces that add a subtle touch of elegance to your look.
+            You love simple, timeless pieces that add a subtle touch
+            of elegance to your look.
         </p>
 
+
+        <!-- RECOMMENDED FOR YOU -->
 
         <div class="recommendations">
 
@@ -610,6 +701,7 @@
 
         </div>
 
+
         <button class="main-btn retake" onclick="startQuiz()">
             RETAKE QUIZ
         </button>
@@ -619,7 +711,10 @@
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer id="contact">
 
     <div class="footer-logo">
@@ -653,395 +748,494 @@
 
 <script>
 
-    /* =========================
-       QUIZ QUESTIONS
-    ========================= */
+/* =========================
+   QUIZ QUESTIONS
+========================= */
 
-    const questions = [
+const questions = [
 
-        {
-            question: "Which jewelry color do you prefer?",
-            answers: [
-                "Gold",
-                "Silver",
-                "Rose Gold",
-                "I like all of them"
-            ]
-        },
+    {
+        question: "Which jewelry color do you prefer?",
 
-        {
-            question: "What's your personal style?",
-            answers: [
-                "Minimal & Elegant",
-                " Glamorous",
-                " Bold & Edgy",
-                " Cute & Feminine"
-            ]
-        },
+        answers: [
+            "Gold",
+            "Silver",
+            "Rose Gold",
+            "I like all of them"
+        ]
+    },
 
-        {
-            question: "When do you usually wear jewelry?",
-            answers: [
-                "Every day",
-                " Special occasions",
-                " Work / School",
-                " Dates & Events"
-            ]
-        },
+    {
+        question: "What's your personal style?",
 
-        {
-            question: "Which jewelry piece do you love most?",
-            answers: [
-                "Rings",
-                "Necklaces",
-                "Earrings",
-                "Bracelets"
-            ]
-        },
+        answers: [
+            "Minimal & Elegant",
+            "Glamorous",
+            "Bold & Edgy",
+            "Cute & Feminine"
+        ]
+    },
 
-        {
-            question: "Pick the vibe that feels most like you.",
-            answers: [
-                "Simple",
-                "Luxury",
-                "Romantic",
-                "Powerful"
-            ]
+    {
+        question: "When do you usually wear jewelry?",
+
+        answers: [
+            "Every day",
+            "Special occasions",
+            "Work / School",
+            "Dates & Events"
+        ]
+    },
+
+    {
+        question: "Which jewelry piece do you love most?",
+
+        answers: [
+            "Rings",
+            "Necklaces",
+            "Earrings",
+            "Bracelets"
+        ]
+    },
+
+    {
+        question: "Pick the vibe that feels most like you.",
+
+        answers: [
+            "Simple",
+            "Luxury",
+            "Romantic",
+            "Powerful"
+        ]
+    }
+
+];
+
+
+let currentQuestion = 0;
+
+let userAnswers = [];
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+function startQuiz() {
+
+    currentQuestion = 0;
+
+    userAnswers = [];
+
+    document.querySelector(".hero").style.display = "none";
+
+    document.querySelector(".features").style.display = "none";
+
+    document.querySelector("#result-section").style.display = "none";
+
+    document.querySelector("#quiz-section").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    showQuestion();
+
+}
+
+
+/* =========================
+   DISPLAY QUESTION
+========================= */
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question").textContent = q.question;
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTION " + (currentQuestion + 1) +
+        " OF " + questions.length;
+
+    document.getElementById("progress").style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+
+    const answersContainer =
+        document.getElementById("answers");
+
+    answersContainer.innerHTML = "";
+
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("div");
+
+        button.classList.add("answer");
+
+        button.textContent = answer;
+
+
+        if (userAnswers[currentQuestion] === index) {
+
+            button.classList.add("selected");
+
         }
 
-    ];
+
+        button.onclick = function() {
+
+            userAnswers[currentQuestion] = index;
+
+            document.querySelectorAll(".answer").forEach(btn => {
+
+                btn.classList.remove("selected");
+
+            });
+
+            button.classList.add("selected");
+
+        };
 
 
-    let currentQuestion = 0;
+        answersContainer.appendChild(button);
 
-    let userAnswers = [];
+    });
+
+}
 
 
-    /* =========================
-       START QUIZ
-    ========================= */
+/* =========================
+   NEXT QUESTION
+========================= */
 
-    function startQuiz() {
+function nextQuestion() {
 
-        currentQuestion = 0;
+    if (userAnswers[currentQuestion] === undefined) {
 
-        userAnswers = [];
+        alert("Please choose an answer first ✨");
 
-        document.querySelector(".hero").style.display = "none";
+        return;
 
-        document.querySelector(".features").style.display = "none";
+    }
 
-        document.querySelector("#result-section").style.display = "none";
 
-        document.querySelector("#quiz-section").style.display = "block";
+    if (currentQuestion < questions.length - 1) {
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        currentQuestion++;
 
         showQuestion();
 
     }
 
+    else {
 
-    /* =========================
-       DISPLAY QUESTION
-    ========================= */
-
-    function showQuestion() {
-
-        const q = questions[currentQuestion];
-
-        document.getElementById("question").textContent = q.question;
-
-        document.getElementById("questionNumber").textContent =
-            "QUESTION " + (currentQuestion + 1) + " OF " + questions.length;
-
-        document.getElementById("progress").style.width =
-            ((currentQuestion + 1) / questions.length * 100) + "%";
-
-
-        const answersContainer = document.getElementById("answers");
-
-        answersContainer.innerHTML = "";
-
-
-        q.answers.forEach((answer, index) => {
-
-            const button = document.createElement("div");
-
-            button.classList.add("answer");
-
-            button.textContent = answer;
-
-
-            if (userAnswers[currentQuestion] === index) {
-                button.classList.add("selected");
-            }
-
-
-            button.onclick = function () {
-
-                userAnswers[currentQuestion] = index;
-
-                document.querySelectorAll(".answer").forEach(btn => {
-                    btn.classList.remove("selected");
-                });
-
-                button.classList.add("selected");
-
-            };
-
-
-            answersContainer.appendChild(button);
-
-        });
+        showResult();
 
     }
 
-
-    /* =========================
-       NEXT QUESTION
-    ========================= */
-
-    function nextQuestion() {
-
-        if (userAnswers[currentQuestion] === undefined) {
-
-            alert("Please choose an answer first ✨");
-
-            return;
-
-        }
+}
 
 
-        if (currentQuestion < questions.length - 1) {
+/* =========================
+   PREVIOUS QUESTION
+========================= */
 
-            currentQuestion++;
+function previousQuestion() {
 
-            showQuestion();
+    if (currentQuestion > 0) {
 
-        } else {
+        currentQuestion--;
 
-            showResult();
-
-        }
+        showQuestion();
 
     }
 
-
-    /* =========================
-       PREVIOUS QUESTION
-    ========================= */
-
-    function previousQuestion() {
-
-        if (currentQuestion > 0) {
-
-            currentQuestion--;
-
-            showQuestion();
-
-        }
-
-    }
+}
 
 
-    /* =========================
-       CALCULATE RESULT
-    ========================= */
+/* =========================
+   CALCULATE RESULT
+========================= */
 
-    function showResult() {
+function showResult() {
 
-        document.getElementById("quiz-section").style.display = "none";
+    document.getElementById("quiz-section").style.display = "none";
 
-        document.getElementById("result-section").style.display = "block";
+    document.getElementById("result-section").style.display = "block";
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-
-        /*
-           Count the selected answers.
-           Each answer represents a different
-           personality/style category.
-        */
-
-        let styleScores = {
-            elegant: 0,
-            glamorous: 0,
-            edgy: 0,
-            romantic: 0
-        };
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 
-        userAnswers.forEach((answer, questionIndex) => {
+    let styleScores = {
 
-            if (answer === 0) {
-                styleScores.elegant++;
-            }
+        elegant: 0,
 
-            if (answer === 1) {
-                styleScores.glamorous++;
-            }
+        glamorous: 0,
 
-            if (answer === 2) {
-                styleScores.edgy++;
-            }
+        edgy: 0,
 
-            if (answer === 3) {
-                styleScores.romantic++;
-            }
+        romantic: 0
 
-        });
+    };
 
 
-        let highestStyle = "elegant";
+    userAnswers.forEach((answer) => {
 
-        let highestScore = styleScores.elegant;
+        if (answer === 0) {
 
-
-        for (let style in styleScores) {
-
-            if (styleScores[style] > highestScore) {
-
-                highestScore = styleScores[style];
-
-                highestStyle = style;
-
-            }
+            styleScores.elegant++;
 
         }
 
+        if (answer === 1) {
 
-        displayResult(highestStyle);
-
-    }
-
-
-    /* =========================
-       RESULT INFORMATION
-    ========================= */
-
-    function displayResult(style) {
-
-        const title = document.getElementById("resultTitle");
-
-        const description = document.getElementById("resultDescription");
-
-        const products = document.getElementById("products");
-
-
-        products.innerHTML = "";
-
-
-        if (style === "elegant") {
-
-            title.textContent = "✨ Elegant Minimalist";
-
-            description.textContent =
-                "You love simple, timeless pieces that add a subtle touch of elegance to your look. Your perfect jewelry is delicate, sophisticated and easy to wear every day.";
-
-
-            createProduct("🤍", "Pearl Drop Earrings", "$45","/images/pearl.png");
-
-            createProduct("💍", "Classic Gold Ring", "$55","/images/gold.png");
-
-            createProduct("📿", "Fine Chain Necklace", "$65","/images/chain.png");
+            styleScores.glamorous++;
 
         }
 
+        if (answer === 2) {
 
-        else if (style === "glamorous") {
-
-            title.textContent = "👑 Glamorous Icon";
-
-            description.textContent =
-                "You love making a statement. Sparkling stones, bold designs and luxurious details are perfect for your glamorous personality.";
-
-
-            createProduct("💎", "Crystal Statement Necklace", "$95","/images/crystle.png");
-
-            createProduct("✨", "Diamond Style Earrings", "$85","/images/diamond.png");
-
-            createProduct("👑", "Luxury Gold Bracelet", "$110","/images/bracelet.png");
+            styleScores.edgy++;
 
         }
 
+        if (answer === 3) {
 
-        else if (style === "edgy") {
-
-            title.textContent = "🖤 Bold & Edgy";
-
-            description.textContent =
-                "You are confident and expressive. You love unique pieces that stand out and show your personality.";
-
-
-            createProduct("🖤", "Black Statement Ring", "$50","/images/black.png");
-
-            createProduct("⛓️", "Bold Chain Necklace", "$75","/images/bold.png");
-
-            createProduct("⚡", "Lightning Earrings", "$60","/images/lightning.png");
+            styleScores.romantic++;
 
         }
 
-
-        else {
-
-            title.textContent = "🌸 Romantic Dreamer";
-
-            description.textContent =
-                "You love soft, beautiful and feminine jewelry. Pearls, delicate shapes and romantic details are perfect for your style.";
+    });
 
 
-            createProduct("🌸", "Rose Charm Necklace", "$60","/images/rose.png");
+    let highestStyle = "elegant";
 
-            createProduct("💕", "Heart Bracelet", "$50","/images/heart.png");
+    let highestScore = styleScores.elegant;
 
-            createProduct("🌷", "Floral Earrings", "$45","/images/floral.png");
+
+    for (let style in styleScores) {
+
+        if (styleScores[style] > highestScore) {
+
+            highestScore = styleScores[style];
+
+            highestStyle = style;
 
         }
 
     }
 
 
+    displayResult(highestStyle);
+
+}
+
+
+/* =========================
+   RESULT INFORMATION
+========================= */
+
+function displayResult(style) {
+
+    const title =
+        document.getElementById("resultTitle");
+
+    const description =
+        document.getElementById("resultDescription");
+
+    const products =
+        document.getElementById("products");
+
+
+    products.innerHTML = "";
+
+
     /* =========================
-       CREATE PRODUCTS
+       ELEGANT
     ========================= */
 
-    function createProduct(icon, name, price) {
+    if (style === "elegant") {
 
-        const products = document.getElementById("products");
+        title.textContent =
+            "✨ Elegant Minimalist";
 
-
-        const product = document.createElement("div");
-
-        product.classList.add("product");
-
-
-        product.innerHTML = `
-
-            <div class="product-image">
-                ${icon}
-            </div>
-
-            <h3>
-                ${name}
-            </h3>
-
-            <p>
-                ${price}
-            </p>
-
-        `;
+        description.textContent =
+            "You love simple, timeless pieces that add a subtle touch of elegance to your look. Your perfect jewelry is delicate, sophisticated and easy to wear every day.";
 
 
-        products.appendChild(product);
+        createProduct(
+            "Pearl Drop Earrings",
+            "$45",
+            "images/pearl.png"
+        );
+
+        createProduct(
+            "Classic Gold Ring",
+            "$55",
+            "images/gold.png"
+        );
+
+        createProduct(
+            "Fine Chain Necklace",
+            "$65",
+            "images/chain.png"
+        );
 
     }
+
+
+    /* =========================
+       GLAMOROUS
+    ========================= */
+
+    else if (style === "glamorous") {
+
+        title.textContent =
+            "👑 Glamorous Icon";
+
+        description.textContent =
+            "You love making a statement. Sparkling stones, bold designs and luxurious details are perfect for your glamorous personality.";
+
+
+        createProduct(
+            "Crystal Statement Necklace",
+            "$95",
+            "images/crystle.png"
+        );
+
+        createProduct(
+            "Diamond Style Earrings",
+            "$85",
+            "images/diamond.png"
+        );
+
+        createProduct(
+            "Luxury Gold Bracelet",
+            "$110",
+            "images/bracelet.png"
+        );
+
+    }
+
+
+    /* =========================
+       EDGY
+    ========================= */
+
+    else if (style === "edgy") {
+
+        title.textContent =
+            "🖤 Bold & Edgy";
+
+        description.textContent =
+            "You are confident and expressive. You love unique pieces that stand out and show your personality.";
+
+
+        createProduct(
+            "Black Statement Ring",
+            "$50",
+            "images/black.png"
+        );
+
+        createProduct(
+            "Bold Chain Necklace",
+            "$75",
+            "images/bold.png"
+        );
+
+        createProduct(
+            "Lightning Earrings",
+            "$60",
+            "images/lightning.png"
+        );
+
+    }
+
+
+    /* =========================
+       ROMANTIC
+    ========================= */
+
+    else {
+
+        title.textContent =
+            "🌸 Romantic Dreamer";
+
+        description.textContent =
+            "You love soft, beautiful and feminine jewelry. Pearls, delicate shapes and romantic details are perfect for your style.";
+
+
+        createProduct(
+            "Rose Charm Necklace",
+            "$60",
+            "images/rose.png"
+        );
+
+        createProduct(
+            "Heart Bracelet",
+            "$50",
+            "images/heart.png"
+        );
+
+        createProduct(
+            "Floral Earrings",
+            "$45",
+            "images/floral.png"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   CREATE PRODUCT CARDS
+========================= */
+
+function createProduct(name, price, image) {
+
+    const products =
+        document.getElementById("products");
+
+
+    const product =
+        document.createElement("div");
+
+    product.classList.add("product");
+
+
+    product.innerHTML = `
+
+        <div class="product-image">
+
+            <img
+                src="${image}"
+                alt="${name}"
+                onerror="this.src='https://via.placeholder.com/500x500/f1e7dd/9b7653?text=ZAI+Jewelry';"
+            >
+
+        </div>
+
+        <h3>
+            ${name}
+        </h3>
+
+        <p>
+            ${price}
+        </p>
+
+    `;
+
+
+    products.appendChild(product);
+
+}
 
 </script>
 
